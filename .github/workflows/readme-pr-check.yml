@@ -1,9 +1,10 @@
 name: README PR Check
 
 on:
-  # pull_request_target, not pull_request: fork PRs get a read-only token under
-  # pull_request, so the label and comment calls fail with 403. This job only
-  # calls the API and never checks out PR code, so the write token is safe.
+  # pull_request (migrated from pull_request_target Oct 2026: GitHub blocks
+  # pull_request_target in public repos without an Actions policy as of Nov 2, 2026).
+  # Note: fork PRs get a read-only token here, so label/comment calls fail with 403
+  # on forks. This job only calls the API and never checks out PR code.
   pull_request:
     types: [opened]
     paths:
